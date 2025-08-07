@@ -2,6 +2,8 @@ syntax = "proto3";
 package task;
 option go_package = "github.com/Kilril312/project-protos/proto/task";
 
+import "google/protobuf/empty.proto";
+
 // Сущность задача
 message Task {
   uint32 id = 1;
@@ -32,8 +34,8 @@ message DeleteTaskRequest {
   uint32 id = 1;
 }
 
-message DeleteTaskResponse {
-  bool success = 1;
+message EmptyResponse {
+  
 }
 
 // Запрос на вывод всех задач
@@ -47,7 +49,7 @@ service TaskService {
   rpc CreateTask (CreateTaskRequest) returns (CreateTaskResponse);
   rpc GetTask (Task) returns (Task);
   rpc UpdateTask (UpdateTaskRequest) returns (UpdateTaskResponse);
-  rpc DeleteTask (DeleteTaskRequest) returns (DeleteTaskResponse);
+  rpc DeleteTask (DeleteTaskRequest) returns (EmptyResponse);
   rpc ListTasks (ListTasksRequest) returns (ListTasksResponse);
    // TODO:
 }

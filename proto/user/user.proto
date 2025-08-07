@@ -2,6 +2,8 @@ syntax = "proto3";
 package user;
 option go_package = "github.com/Kilril312/project-protos/proto/user";
 
+import "google/protobuf/empty.proto";
+
 // Сущность пользователь
 message User {
   uint32 id    = 1;
@@ -32,9 +34,10 @@ message DeleteUserRequest {
   uint32 id            = 1;
 }
 
-message DeleteUserResponse {
-  bool success = 1;
+message EmptyResponse {
+  
 }
+
 // Запрос на вывод всех пользователей
 message ListUsersRequest {
   
@@ -48,7 +51,7 @@ service UserService {
   rpc CreateUser (CreateUserRequest) returns (CreateUserResponse);
   rpc GetUser    (User)              returns (User);
   rpc UpdateUser (UpdateUserRequest) returns (User);
-  rpc DeleteUser (DeleteUserRequest) returns (DeleteUserResponse);
+  rpc DeleteUser (DeleteUserRequest) returns (EmptyResponse);
   rpc ListUsers  (ListUsersRequest)  returns (ListUsersResponse);
    // TODO:
 }

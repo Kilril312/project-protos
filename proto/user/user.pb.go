@@ -9,6 +9,7 @@ package user
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	_ "google.golang.org/protobuf/types/known/emptypb"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
@@ -329,27 +330,26 @@ func (x *DeleteUserRequest) GetId() uint32 {
 	return 0
 }
 
-type DeleteUserResponse struct {
+type EmptyResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *DeleteUserResponse) Reset() {
-	*x = DeleteUserResponse{}
+func (x *EmptyResponse) Reset() {
+	*x = EmptyResponse{}
 	mi := &file_proto_user_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *DeleteUserResponse) String() string {
+func (x *EmptyResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*DeleteUserResponse) ProtoMessage() {}
+func (*EmptyResponse) ProtoMessage() {}
 
-func (x *DeleteUserResponse) ProtoReflect() protoreflect.Message {
+func (x *EmptyResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_proto_user_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -361,16 +361,9 @@ func (x *DeleteUserResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use DeleteUserResponse.ProtoReflect.Descriptor instead.
-func (*DeleteUserResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use EmptyResponse.ProtoReflect.Descriptor instead.
+func (*EmptyResponse) Descriptor() ([]byte, []int) {
 	return file_proto_user_proto_rawDescGZIP(), []int{6}
-}
-
-func (x *DeleteUserResponse) GetSuccess() bool {
-	if x != nil {
-		return x.Success
-	}
-	return false
 }
 
 // Запрос на вывод всех пользователей
@@ -458,7 +451,7 @@ var File_proto_user_proto protoreflect.FileDescriptor
 
 const file_proto_user_proto_rawDesc = "" +
 	"\n" +
-	"\x10proto/user.proto\x12\x04user\"H\n" +
+	"\x10proto/user.proto\x12\x04user\x1a\x1bgoogle/protobuf/empty.proto\"H\n" +
 	"\x04User\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x14\n" +
 	"\x05email\x18\x02 \x01(\tR\x05email\x12\x1a\n" +
@@ -477,13 +470,12 @@ const file_proto_user_proto_rawDesc = "" +
 	"\x04user\x18\x01 \x01(\v2\n" +
 	".user.UserR\x04user\"#\n" +
 	"\x11DeleteUserRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\rR\x02id\".\n" +
-	"\x12DeleteUserResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess\"\x12\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\"\x0f\n" +
+	"\rEmptyResponse\"\x12\n" +
 	"\x10ListUsersRequest\"5\n" +
 	"\x11ListUsersResponse\x12 \n" +
 	"\x05users\x18\x01 \x03(\v2\n" +
-	".user.UserR\x05users2\xa3\x02\n" +
+	".user.UserR\x05users2\x9e\x02\n" +
 	"\vUserService\x12?\n" +
 	"\n" +
 	"CreateUser\x12\x17.user.CreateUserRequest\x1a\x18.user.CreateUserResponse\x12!\n" +
@@ -492,9 +484,9 @@ const file_proto_user_proto_rawDesc = "" +
 	".user.User\x121\n" +
 	"\n" +
 	"UpdateUser\x12\x17.user.UpdateUserRequest\x1a\n" +
-	".user.User\x12?\n" +
+	".user.User\x12:\n" +
 	"\n" +
-	"DeleteUser\x12\x17.user.DeleteUserRequest\x1a\x18.user.DeleteUserResponse\x12<\n" +
+	"DeleteUser\x12\x17.user.DeleteUserRequest\x1a\x13.user.EmptyResponse\x12<\n" +
 	"\tListUsers\x12\x16.user.ListUsersRequest\x1a\x17.user.ListUsersResponseB0Z.github.com/Kilril312/project-protos/proto/userb\x06proto3"
 
 var (
@@ -517,7 +509,7 @@ var file_proto_user_proto_goTypes = []any{
 	(*UpdateUserRequest)(nil),  // 3: user.UpdateUserRequest
 	(*UpdateUserResponse)(nil), // 4: user.UpdateUserResponse
 	(*DeleteUserRequest)(nil),  // 5: user.DeleteUserRequest
-	(*DeleteUserResponse)(nil), // 6: user.DeleteUserResponse
+	(*EmptyResponse)(nil),      // 6: user.EmptyResponse
 	(*ListUsersRequest)(nil),   // 7: user.ListUsersRequest
 	(*ListUsersResponse)(nil),  // 8: user.ListUsersResponse
 }
@@ -533,7 +525,7 @@ var file_proto_user_proto_depIdxs = []int32{
 	2, // 8: user.UserService.CreateUser:output_type -> user.CreateUserResponse
 	0, // 9: user.UserService.GetUser:output_type -> user.User
 	0, // 10: user.UserService.UpdateUser:output_type -> user.User
-	6, // 11: user.UserService.DeleteUser:output_type -> user.DeleteUserResponse
+	6, // 11: user.UserService.DeleteUser:output_type -> user.EmptyResponse
 	8, // 12: user.UserService.ListUsers:output_type -> user.ListUsersResponse
 	8, // [8:13] is the sub-list for method output_type
 	3, // [3:8] is the sub-list for method input_type

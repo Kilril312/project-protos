@@ -9,6 +9,7 @@ package task
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	_ "google.golang.org/protobuf/types/known/emptypb"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
@@ -305,27 +306,26 @@ func (x *DeleteTaskRequest) GetId() uint32 {
 	return 0
 }
 
-type DeleteTaskResponse struct {
+type EmptyResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *DeleteTaskResponse) Reset() {
-	*x = DeleteTaskResponse{}
+func (x *EmptyResponse) Reset() {
+	*x = EmptyResponse{}
 	mi := &file_proto_task_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *DeleteTaskResponse) String() string {
+func (x *EmptyResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*DeleteTaskResponse) ProtoMessage() {}
+func (*EmptyResponse) ProtoMessage() {}
 
-func (x *DeleteTaskResponse) ProtoReflect() protoreflect.Message {
+func (x *EmptyResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_proto_task_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -337,16 +337,9 @@ func (x *DeleteTaskResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use DeleteTaskResponse.ProtoReflect.Descriptor instead.
-func (*DeleteTaskResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use EmptyResponse.ProtoReflect.Descriptor instead.
+func (*EmptyResponse) Descriptor() ([]byte, []int) {
 	return file_proto_task_proto_rawDescGZIP(), []int{6}
-}
-
-func (x *DeleteTaskResponse) GetSuccess() bool {
-	if x != nil {
-		return x.Success
-	}
-	return false
 }
 
 // Запрос на вывод всех задач
@@ -434,7 +427,7 @@ var File_proto_task_proto protoreflect.FileDescriptor
 
 const file_proto_task_proto_rawDesc = "" +
 	"\n" +
-	"\x10proto/task.proto\x12\x04task\",\n" +
+	"\x10proto/task.proto\x12\x04task\x1a\x1bgoogle/protobuf/empty.proto\",\n" +
 	"\x04Task\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x14\n" +
 	"\x05title\x18\x02 \x01(\tR\x05title\")\n" +
@@ -450,13 +443,12 @@ const file_proto_task_proto_rawDesc = "" +
 	"\x04task\x18\x01 \x01(\v2\n" +
 	".task.TaskR\x04task\"#\n" +
 	"\x11DeleteTaskRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\rR\x02id\".\n" +
-	"\x12DeleteTaskResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess\"\x12\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\"\x0f\n" +
+	"\rEmptyResponse\"\x12\n" +
 	"\x10ListTasksRequest\"5\n" +
 	"\x11ListTasksResponse\x12 \n" +
 	"\x05tasks\x18\x01 \x03(\v2\n" +
-	".task.TaskR\x05tasks2\xb1\x02\n" +
+	".task.TaskR\x05tasks2\xac\x02\n" +
 	"\vTaskService\x12?\n" +
 	"\n" +
 	"CreateTask\x12\x17.task.CreateTaskRequest\x1a\x18.task.CreateTaskResponse\x12!\n" +
@@ -464,9 +456,9 @@ const file_proto_task_proto_rawDesc = "" +
 	".task.Task\x1a\n" +
 	".task.Task\x12?\n" +
 	"\n" +
-	"UpdateTask\x12\x17.task.UpdateTaskRequest\x1a\x18.task.UpdateTaskResponse\x12?\n" +
+	"UpdateTask\x12\x17.task.UpdateTaskRequest\x1a\x18.task.UpdateTaskResponse\x12:\n" +
 	"\n" +
-	"DeleteTask\x12\x17.task.DeleteTaskRequest\x1a\x18.task.DeleteTaskResponse\x12<\n" +
+	"DeleteTask\x12\x17.task.DeleteTaskRequest\x1a\x13.task.EmptyResponse\x12<\n" +
 	"\tListTasks\x12\x16.task.ListTasksRequest\x1a\x17.task.ListTasksResponseB0Z.github.com/Kilril312/project-protos/proto/taskb\x06proto3"
 
 var (
@@ -489,7 +481,7 @@ var file_proto_task_proto_goTypes = []any{
 	(*UpdateTaskRequest)(nil),  // 3: task.UpdateTaskRequest
 	(*UpdateTaskResponse)(nil), // 4: task.UpdateTaskResponse
 	(*DeleteTaskRequest)(nil),  // 5: task.DeleteTaskRequest
-	(*DeleteTaskResponse)(nil), // 6: task.DeleteTaskResponse
+	(*EmptyResponse)(nil),      // 6: task.EmptyResponse
 	(*ListTasksRequest)(nil),   // 7: task.ListTasksRequest
 	(*ListTasksResponse)(nil),  // 8: task.ListTasksResponse
 }
@@ -505,7 +497,7 @@ var file_proto_task_proto_depIdxs = []int32{
 	2, // 8: task.TaskService.CreateTask:output_type -> task.CreateTaskResponse
 	0, // 9: task.TaskService.GetTask:output_type -> task.Task
 	4, // 10: task.TaskService.UpdateTask:output_type -> task.UpdateTaskResponse
-	6, // 11: task.TaskService.DeleteTask:output_type -> task.DeleteTaskResponse
+	6, // 11: task.TaskService.DeleteTask:output_type -> task.EmptyResponse
 	8, // 12: task.TaskService.ListTasks:output_type -> task.ListTasksResponse
 	8, // [8:13] is the sub-list for method output_type
 	3, // [3:8] is the sub-list for method input_type
