@@ -34,8 +34,8 @@ message DeleteUserRequest {
   uint32 id            = 1;
 }
 
-message EmptyResponse {
-  
+message DeleteUserResponse {
+    bool success = 1;
 }
 
 // Запрос на вывод всех пользователей
@@ -51,7 +51,7 @@ service UserService {
   rpc CreateUser (CreateUserRequest) returns (CreateUserResponse);
   rpc GetUser    (User)              returns (User);
   rpc UpdateUser (UpdateUserRequest) returns (User);
-  rpc DeleteUser (DeleteUserRequest) returns (EmptyResponse);
+  rpc DeleteUser (DeleteUserRequest) returns (DeleteUserResponse);
   rpc ListUsers  (ListUsersRequest)  returns (ListUsersResponse);
    // TODO:
 }
