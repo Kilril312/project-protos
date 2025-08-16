@@ -19,6 +19,17 @@ message CreateUserRequest {
 message CreateUserResponse {
   User user = 1;
 }
+
+//Запрос на получение конкретного пользователя
+
+message GetUserRequest {
+  uint32 id = 1;
+}
+
+message GetUserResponse {
+  User user = 1;
+}
+
 // Запрос на изменение
 message UpdateUserRequest {
   uint32  id          = 1;
