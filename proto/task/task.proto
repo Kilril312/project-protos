@@ -5,15 +5,28 @@ option go_package = "github.com/Kilril312/project-protos/proto/task";
 // Сущность задача
 message Task {
   uint32 id = 1;
-  string title = 2;
+  uint32 user_id = 2;
+  string title = 3;
+
 }
 
 // Запрос на создание 
 message CreateTaskRequest {
   string title = 1;
+  uint32 user_id = 2;
 }
 
 message CreateTaskResponse {
+  Task task = 1;
+}
+
+// Запрос на получение отдельной задачи
+
+message GetTaskRequest {
+  uint32 id = 1;
+}
+
+message GetTaskResponse {
   Task task = 1;
 }
 
@@ -39,15 +52,20 @@ message DeleteTaskResponse {
 // Запрос на вывод всех задач
 message ListTasksRequest {}
 
+message ListTasksByUserRequest {
+  uint32 user_id = 1;
+}
+
 message ListTasksResponse {
   repeated Task tasks = 1;
 }
 
 service TaskService {
   rpc CreateTask (CreateTaskRequest) returns (CreateTaskResponse);
-  rpc GetTask (Task) returns (Task);
+  rpc GetTask (GetTaskRequest) returns (GetTaskResponse);
   rpc UpdateTask (UpdateTaskRequest) returns (UpdateTaskResponse);
   rpc DeleteTask (DeleteTaskRequest) returns (DeleteTaskResponse);
   rpc ListTasks (ListTasksRequest) returns (ListTasksResponse);
+  rpc ListTasksByUser(ListTasksByUserRequest) returns (ListTasksResponse);
    // TODO:
 }
